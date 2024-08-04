@@ -59,3 +59,4 @@ export default function App() {
 }
 
 // TODO: add lowercase to following letters in function
+// TODO: refactor into separate components
