@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import './styles.css';
+import {useNumbers} from './hooks/useNumbers';
 
 export default function App() {
   const [step, setStep] = useState(0);
   const [count, setCount] = useState(1);
-  const dateConfig = { year: 'numeric', month: 'long', day: 'numeric' };
+  const multiplication = step * count; // 'daysToAdd' ->Variable amount of days to add
+  const multiplicationWord = useNumbers(multiplication);
+  const today = new Date(); // today as date object
+  const dateConfig = {year: 'numeric', month: 'long', day: 'numeric'};
+
+  // Function to add a specified number of days to a date
+  const addDays = (date, days) => {
+    const newdate = new Date(date);
+    newdate.setDate(newdate.getDate() + days);
+    return newdate;
+  };
 
   const handleMinusSteps = () => {
     setStep((c) => c - 1);
@@ -38,8 +49,15 @@ export default function App() {
       </div>
       <div>
         <p>
-          Today it is {new Date().toLocaleDateString('en-US', dateConfig)}.{' '}
-          {step * count} days from today it is: {}.
+          Today it is {today.toLocaleDateString('en-US', dateConfig)}.{' '}
+          {step
+            ? `${multiplicationWord} ${
+                multiplicationWord === 'One' ? 'day' : 'days'
+              } from today it is: ${addDays(
+                today,
+                multiplication
+              ).toLocaleDateString('en-US', dateConfig)}.`
+            : null}
         </p>
       </div>
     </div>
