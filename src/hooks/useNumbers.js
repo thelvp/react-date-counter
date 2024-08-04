@@ -1,7 +1,6 @@
 export const useNumbers = (n) => {
   if (n < 0) return false;
 
-  // Arrays to hold words for single-digit, double-digit, and below-hundred numbers
   const single_digit = [
     '',
     'One',
@@ -39,7 +38,6 @@ export const useNumbers = (n) => {
 
   if (n === 0) return 'Zero';
 
-  // Recursive function to translate the number into words
   function translate(n) {
     let word = '';
     if (n < 10) {
@@ -71,7 +69,6 @@ export const useNumbers = (n) => {
     return word;
   }
 
-  // Get the result by translating the given number
   let result = translate(n);
   return result.trim();
 };
