@@ -4,6 +4,7 @@ import './styles.css';
 export default function App() {
   const [step, setStep] = useState(0);
   const [count, setCount] = useState(1);
+  const dateConfig = { year: 'numeric', month: 'long', day: 'numeric' };
 
   const handleMinusSteps = () => {
     setStep((c) => c - 1);
@@ -37,8 +38,8 @@ export default function App() {
       </div>
       <div>
         <p>
-          Today it is {new Date().toLocaleDateString()}. {step * count} days
-          from today it is: {}.
+          Today it is {new Date().toLocaleDateString('en-US', dateConfig)}.{' '}
+          {step * count} days from today it is: {}.
         </p>
       </div>
     </div>
