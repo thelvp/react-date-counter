@@ -37,7 +37,8 @@ export default function App() {
       </div>
       <div>
         <p>
-          Today it is {}. {} days from today it is: {}.
+          Today it is {new Date().toLocaleDateString()}. {step * count} days
+          from today it is: {}.
         </p>
       </div>
     </div>
