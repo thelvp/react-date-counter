@@ -3,7 +3,7 @@ import './styles.css';
 
 export default function App() {
   const [count, setCount] = useState(0);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const date = new Date('11 November 2024');
   date.setDate(date.getDate() + count);
   const dateConfig = {year: 'numeric', month: 'long', day: 'numeric'};
@@ -11,9 +11,8 @@ export default function App() {
   return (
     <div className='App'>
       <div>
-        <button onClick={() => setStep((c) => c - 1)}>-</button>
-        <span>Step: {step}</span>
-        <button onClick={() => setStep((c) => c + 1)}>+</button>
+        <input type='range' min={0} max={10}></input>
+        <span>{step}</span>
       </div>
 
       <div>
